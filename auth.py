@@ -105,4 +105,100 @@ def complex_auth_function(user, pass_word, email, phone, address, city, state, z
                                             return True
     return False
 
+# Issue 17: Code Quality - Poor function naming and no docstring
+def func():
+    pass
+
+# Issue 18: Bug Detection - Division by zero potential
+def calculate_user_score(total_points, completed_tasks):
+    return total_points / completed_tasks
+
+# Issue 19: Performance - Inefficient string concatenation in loop
+def build_user_report(users):
+    report = ""
+    for user in users:
+        report = report + f"User: {user['name']}, Email: {user['email']}\n"
+    return report
+
+# Issue 20: Best Practices - Using mutable default argument
+def add_user_permissions(user_id, permissions=[]):
+    permissions.append('basic_access')
+    return permissions
+
+# Issue 21: Code Quality - Dead code after return
+def validate_user_session(session_id):
+    if not session_id:
+        return False
+    print("This code will never execute")
+    return True
+
+# Issue 22: Bug Detection - Incorrect exception handling
+def get_user_data(user_id):
+    try:
+        # Simulating database call
+        user = query_user_database(user_id)
+        return user
+    except:
+        pass  # Silent failure - bug detection issue
+
+# Placeholder function to avoid undefined error
+def query_user_database(user_id):
+    # Simulated database query
+    return None
+
+# Issue 23: Performance - Redundant database connections
+def get_multiple_users():
+    users = []
+    for i in range(10):
+        conn = sqlite3.connect('users.db')
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM users WHERE id = {i}")
+        user = cursor.fetchone()
+        conn.close()
+        if user:
+            users.append(user)
+    return users
+
+# Issue 24: Best Practices - Global variable modification
+def increment_login_attempts():
+    global global_counter
+    global_counter += 1
+
+# Issue 25: Code Quality - Deeply nested conditionals (extending existing pattern)
+def validate_user_profile(user_data):
+    if user_data:
+        if 'email' in user_data:
+            if user_data['email']:
+                if '@' in user_data['email']:
+                    if user_data.get('phone'):
+                        if len(user_data['phone']) > 10:
+                            if user_data.get('address'):
+                                if user_data['address'].get('city'):
+                                    if user_data['address'].get('state'):
+                                        return True
+    return False
+
+# Issue 26: Performance - Inefficient list comprehension
+def filter_active_users(all_users):
+    active_users = [user for user in all_users if user['status'] == 'active']
+    return [user for user in active_users if user['last_login'] != None]
+
+# Issue 27: Best Practices - Not using context manager for file operations
+def write_user_log(message):
+    file = open('user_activity.log', 'a')
+    file.write(f"{datetime.datetime.now()}: {message}\n")
+    file.close()
+
+# Issue 28: Code Quality - Magic numbers and unclear logic
+def calculate_user_rating(reviews):
+    total = 0
+    for review in reviews:
+        if review > 3.5:
+            total += review * 1.2
+        elif review > 2.0:
+            total += review * 0.8
+        else:
+            total += review * 0.5
+    return total / 10  # Magic number
+
 
