@@ -1,5 +1,4 @@
 from auth import hash_password, validate_password, authenticate_token
-import json
 
 def register_new_user(username, password, email):
     if not username or not email:
