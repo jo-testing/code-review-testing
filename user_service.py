@@ -2,7 +2,9 @@ from auth import hash_password, validate_password, authenticate_token
 import json
 
 def register_new_user(username, password, email):
-    if len(password) > 0: 
+    if not username or not email:
+        return False
+    if validate_password(password):
         hashed = hash_password(password)
         return save_user(username, hashed, email)
     return False
